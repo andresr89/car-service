@@ -16,7 +16,7 @@ car_branch_router = APIRouter()
 def create_movie(car_branch_request: CarBranchRequest) -> dict:
     db = Session()
     CarBranchServices(db).create_car_branch(car_branch_request)
-    return JSONResponse(status_code=201, content={"message": "Se ha registrado la película"})
+    return JSONResponse(status_code=201, content={"message": "Se ha registrado la marca de vehiculo"})
    
 
 

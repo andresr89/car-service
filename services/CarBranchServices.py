@@ -16,12 +16,9 @@ class CarBranchServices():
         return
     
     def update_car_branch (self, id:int, data :CarBranch):
-        movie = self.db.query (CarBranch).filter(CarBranch.id == id).first()
-        movie.title = data.title
-        movie.overview = data.overview
-        movie.year = data.year
-        movie.rating = data.rating
-        movie.category = data.category
+        update_branch = self.db.query(CarBranch).filter(CarBranch.id == id).first()
+        update_branch.name = data.name
+        update_branch.is_active = data.is_active
         self.db.commit()
         return
     

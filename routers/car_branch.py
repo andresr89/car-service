@@ -34,6 +34,6 @@ def delete_movie(branch_id: int) -> dict:
     car_branch_service = CarBranchServices(db)
     car_branch_service.delete_car_branch(branch_id,)
 
-    return JSONResponse(status_code=200, content={"message": "Se ha eliminado la marcad de vehiculo"})
+    return JSONResponse(status_code=200, content={"message": "Se ha eliminado la marca de vehiculo"})
 
 

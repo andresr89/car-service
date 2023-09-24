@@ -11,6 +11,18 @@ from schemas.user import CarBranchRequest
 
 car_branch_router = APIRouter()
 
+@car_branch_router.get('/car-branch', tags=['car-branch'], response_model=List[CarBranchRequest], status_code=201)
+def get_car_branchs() -> List[CarBranchRequest]:
+     db = Session()
+     result = CarBranchServices(db).get_car_branchs()
+     return JSONResponse(status_code=200, content=jsonable_encoder(result))
+
+@car_branch_router.get ('/car-branch/{id}', tags=['car-branch'], response_model= CarBranchRequest)
+def get_car_branch (id:int =Path(ge=1, le=2000)) -> CarBranchRequest:
+    db = Session()
+    result = CarBranchServices(db).get_car_branch(id)
+    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+
 
 @car_branch_router.post('/car-branch', tags=['car-branch'], response_model=dict, status_code=201)
 def create_branch(car_branch_request: CarBranchRequest) -> dict:

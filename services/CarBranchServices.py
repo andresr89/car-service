@@ -4,6 +4,16 @@ from schemas.user import CarBranchRequest
 
 class CarBranchServices():
     
+    def get_car_branchs(self):
+        result = self.db.query(CarBranch).all()
+        return result
+    
+    def get_car_branch(self,id):
+        result =self.db.query(CarBranch) .filter (CarBranch.id ==id).first()
+        return result
+   
+
+
     def __init__(self, db) -> None:
         self.db = db
 

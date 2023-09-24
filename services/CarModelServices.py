@@ -7,7 +7,13 @@ class CarModelServices():
     def __init__(self, db) -> None:
         self.db = db
 
+    def get_car_models(self):
+        result = self.db.query(CarModel).all()
+        return result
     
+    def get_car_model(self,id):
+        result =self.db.query(CarModel) .filter (CarModel.id ==id).first()
+        return result 
 
     def create_car_model(self, car_model_request: CarModelRequest):
         new_model= CarModel(**car_model_request.dict())

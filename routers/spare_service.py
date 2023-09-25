@@ -27,7 +27,7 @@ def get_spare_service (id:int =Path(ge=1, le=2000)) -> SpareServiceRequest:
 @spare_service_router.post('/spare-service', tags=['spare-service'], response_model=dict, status_code=201)
 def create_spare_service(SpareServiceRequest: SpareServiceRequest) -> dict:
     db = Session()
-    SpareServiceServices(db).create_spare_service(SpareServiceRequest)
+    SpareServiceServices(db).(SpareServiceRequest)
     return JSONResponse(status_code=201, content={"message": "Se ha registrado el articulo de recambio"})
 
 

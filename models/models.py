@@ -26,7 +26,7 @@ class CarModel(Base):
 
 class SpareService(Base):
 
-    __tablename__ = "spare_service "
+    __tablename__ = "spare_service"
 
     id = Column(Integer, primary_key = True, autoincrement=True)
     name = Column(String)

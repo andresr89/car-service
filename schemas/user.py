@@ -15,3 +15,9 @@ class CarModelRequest (BaseModel):
     name : str
     is_active: bool
     car_brand_id : int
+
+class SpareServiceRequest (BaseModel):
+    id : int
+    name : str
+    is_active : bool
+    spare_model_id :int

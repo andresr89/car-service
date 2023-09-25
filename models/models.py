@@ -24,5 +24,16 @@ class CarModel(Base):
     car_brand_id = Column(Integer, ForeignKey('car_branch.id'))
     car_branch = relationship("CarBranch", back_populates="car_models")
 
+class SpareService(Base):
+
+    __tablename__ = "spare_service "
+
+    id = Column(Integer, primary_key = True, autoincrement=True)
+    name = Column(String)
+    is_active = Column(Boolean)
+    spare_model_id = Integer
+
+
+
 
 

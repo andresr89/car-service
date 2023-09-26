@@ -8,6 +8,7 @@ from routers.car_branch import car_branch_router
 from routers.car_model import car_model_router
 from routers.spare_service import spare_service_router
 from routers.spare_model import spare_model_router
+from routers.service import service_router
 from routers.user import user_router
 
 
@@ -21,6 +22,7 @@ app.include_router(car_branch_router)
 app.include_router(car_model_router)
 app.include_router(spare_service_router)
 app.include_router(spare_model_router)
+app.include_router(service_router)
 app.include_router(user_router)
 
 

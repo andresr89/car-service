@@ -24,6 +24,7 @@ class CarModel(Base):
     car_brand_id = Column(Integer, ForeignKey('car_branch.id'))
     car_branch = relationship("CarBranch", back_populates="car_models")
 
+
 class SpareService(Base):
 
     __tablename__ = "spare_service"
@@ -42,7 +43,18 @@ class SpareModel(Base):
     name = Column(String)
     is_active = Column(Boolean)
     car_model_id = Column(Integer, ForeignKey('car_model.id'))  
-    car_model = relationship("CarModel", back_populates="spare_models") 
+    # car_model = relationship("CarModel", back_populates="spare_models") error mapper
+
+class Service(Base):
+
+    __tablename__ = "service"
+
+
+    id = Column (Integer, primary_key= True, autoincrement=True)
+    name = Column (String)
+    is_active = Column(Boolean)
+    spare_service_id = Column (Integer)    
+
 
 
 

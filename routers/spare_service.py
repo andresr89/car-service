@@ -21,7 +21,7 @@ def get_spares_service() -> List[SpareServiceRequest]:
 @spare_service_router.get ('/spare-service/{id}', tags=['spare-service'], response_model= SpareServiceRequest)
 def get_spare_service (id:int =Path(ge=1, le=2000)) -> SpareServiceRequest:
     db = Session()
-    result = SpareServiceServices(db).get_car_branch(id)
+    result = SpareServiceServices(db).get_car_brand(id)
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 @spare_service_router.post('/spare-service', tags=['spare-service'], response_model=dict, status_code=201)
@@ -34,17 +34,17 @@ def create_spare_service(SpareServiceRequest: SpareServiceRequest) -> dict:
 @spare_service_router.put('/spare-service/{model_id}', tags=['spare-service'], response_model=dict, status_code=200)
 def update_spare_service(model_id: int, SpareServiceRequest: SpareServiceRequest) -> dict:
     db = Session()
-    car_branch_service = SpareServiceServices(db)
+    car_brand_service = SpareServiceServices(db)
 
-    car_branch_service.update_spare_service(model_id, SpareServiceRequest)
+    car_brand_service.update_spare_service(model_id, SpareServiceRequest)
     
     return JSONResponse(status_code=201, content={"message": "Se ha modificado el articulo de recambio"})
 
 @spare_service_router.delete('/spare-service/{model_id}', tags=['spare-service'], response_model=dict, status_code=200)
 def delete_spare_service(model_id: int) -> dict:
     db = Session()
-    car_branch_service = SpareServiceServices(db)
-    car_branch_service.delete_spare_service(model_id,)
+    car_brand_service = SpareServiceServices(db)
+    car_brand_service.delete_spare_service(model_id,)
 
     return JSONResponse(status_code=200, content={"message": "Se ha eliminado el articulo de recambio"})
 

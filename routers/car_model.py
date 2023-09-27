@@ -13,7 +13,7 @@ from schemas.user import CarModelRequest
 car_model_router = APIRouter()
 
 @car_model_router.get('/car-model', tags=['car-model'], response_model=List[CarModelRequest], status_code=201)
-def get_car_branchs() -> List[CarModelRequest]:
+def get_car_models() -> List[CarModelRequest]:
      db = Session()
      result = CarModelServices(db).get_car_models()
      return JSONResponse(status_code=200, content=jsonable_encoder(result))

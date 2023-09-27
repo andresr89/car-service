@@ -5,7 +5,7 @@ class User(BaseModel):
     password:str
 
 
-class CarBranchRequest (BaseModel):
+class CarBrandRequest (BaseModel):
     id : int
     name : str
     is_active: bool

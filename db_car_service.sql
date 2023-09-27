@@ -6,7 +6,7 @@
 
 /* Drop Sequences for Autonumber Columns */
 
-DROP SEQUENCE IF EXISTS public.car_branch_id_seq
+DROP SEQUENCE IF EXISTS public.car_brand_id_seq
 ;
 
 DROP SEQUENCE IF EXISTS public.car_model_id_seq
@@ -23,7 +23,7 @@ DROP SEQUENCE IF EXISTS public.spare_service_id_seq
 
 /* Drop Tables */
 
-DROP TABLE IF EXISTS public.car_branch CASCADE
+DROP TABLE IF EXISTS public.car_brand CASCADE
 ;
 
 DROP TABLE IF EXISTS public.car_model CASCADE
@@ -43,9 +43,9 @@ DROP TABLE IF EXISTS public.spare_service CASCADE
 
 /* Create Tables */
 
-CREATE TABLE public.car_branch
+CREATE TABLE public.car_brand
 (
-	id bigint NOT NULL   DEFAULT NEXTVAL(('public."car_branch_id_seq"'::text)::regclass),
+	id bigint NOT NULL   DEFAULT NEXTVAL(('public."car_brand_id_seq"'::text)::regclass),
 	name varchar(250) NULL,
 	is_active boolean NULL
 )
@@ -96,7 +96,7 @@ CREATE TABLE public.spare_service
 
 /* Create Primary Keys, Indexes, Uniques, Checks */
 
-ALTER TABLE public.car_branch ADD CONSTRAINT "PK_car_branch"
+ALTER TABLE public.car_brand ADD CONSTRAINT "PK_car_brand"
 	PRIMARY KEY (id)
 ;
 
@@ -104,7 +104,7 @@ ALTER TABLE public.car_model ADD CONSTRAINT "PK_car_model"
 	PRIMARY KEY (id)
 ;
 
-CREATE INDEX "IXFK_car_model_car_branch" ON public.car_model (car_brand_id ASC)
+CREATE INDEX "IXFK_car_model_car_brand" ON public.car_model (car_brand_id ASC)
 ;
 
 ALTER TABLE public.service ADD CONSTRAINT "PK_service"
@@ -136,8 +136,8 @@ CREATE INDEX "IXFK_spare_service_spare_model" ON public.spare_service (spare_mod
 
 /* Create Foreign Key Constraints */
 
-ALTER TABLE public.car_model ADD CONSTRAINT "FK_car_model_car_branch"
-	FOREIGN KEY (car_brand_id) REFERENCES public.car_branch (id) ON DELETE Restrict ON UPDATE Cascade
+ALTER TABLE public.car_model ADD CONSTRAINT "FK_car_model_car_brand"
+	FOREIGN KEY (car_brand_id) REFERENCES public.car_brand (id) ON DELETE Restrict ON UPDATE Cascade
 ;
 
 ALTER TABLE public.service ADD CONSTRAINT "FK_service_spare_service"
@@ -162,7 +162,7 @@ ALTER TABLE public.spare_service ADD CONSTRAINT "FK_spare_service_spare_model"
 
 /* Create Table Comments, Sequences for Autonumber Columns */
 
-CREATE SEQUENCE public.car_branch_id_seq INCREMENT 1 START 1
+CREATE SEQUENCE public.car_brand_id_seq INCREMENT 1 START 1
 ;
 
 CREATE SEQUENCE public.car_model_id_seq INCREMENT 1 START 1

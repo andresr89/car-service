@@ -34,17 +34,17 @@ def create_service(service_request: ServiceRequest) -> dict:
 @service_router.put('/service/{service_id}', tags=['service'], response_model=dict, status_code=200)
 def update_service(service_id: int, service_request: ServiceRequest) -> dict:
     db = Session()
-    car_branch_service = ServiceServices(db)
+    service_service = ServiceServices(db)
 
-    car_branch_service.updatupdate_service_spare_model(service_id, service_request)
+    service_service.updatupdate_service_spare_model(service_id, service_request)
     
     return JSONResponse(status_code=201, content={"message": "Se ha modificado el tipo de servicio"})
 
 @service_router.delete('/service/{service_id}', tags=['service'], response_model=dict, status_code=200)
 def delete_service(service_id: int) -> dict:
     db = Session()
-    car_branch_service = ServiceServices(db)
-    car_branch_service.delete_service(service_id,)
+    service_service = ServiceServices(db)
+    service_service.delete_service(service_id,)
 
     return JSONResponse(status_code=200, content={"message": "Se ha eliminado tipo de servicio"})
 

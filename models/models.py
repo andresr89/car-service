@@ -55,8 +55,12 @@ class Service(Base):
     is_active = Column(Boolean)
     spare_service_id = Column (Integer)    
 
+class ServiceCarModel(Base):
+        
+    __tablename__ = "service_car_model"
 
-
+    id = Column (Integer, primary_key= True, autoincrement=True)
+    car_model_id = Column (Integer)
 
 
 

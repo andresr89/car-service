@@ -12,7 +12,7 @@ from schemas.user import CarModelRequest
 
 car_model_router = APIRouter()
 
-@car_model_router.get('/car-model', tags=['car-model'], response_model=List[CarModelRequest], status_code=201)
+@car_model_router.get('/car-models', tags=['car-model'], response_model=List[CarModelRequest], status_code=201)
 def get_car_models() -> List[CarModelRequest]:
      db = Session()
      result = CarModelServices(db).get_car_models()
@@ -23,6 +23,13 @@ def get_car_model (id:int =Path(ge=1, le=2000)) -> CarModelRequest:
     db = Session()
     result = CarModelServices(db).get_car_model(id)
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
+
+@car_model_router.get ('/car-models/by-car_brand_id/{car_brand_id}', tags=['car-model'], response_model= CarModelRequest)
+def get_car_model_by_car_brand_id (car_brand_id: int = Path(ge=1, le=2023) ) -> CarModelRequest:
+    db = Session()
+    result = CarModelServices(db).get_car_model_by_car_brand_id(car_brand_id)
+    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+
 
 @car_model_router.post('/car-model', tags=['car-model'], response_model=dict, status_code=201)
 def create_model(car_model_request: CarModelRequest) -> dict:

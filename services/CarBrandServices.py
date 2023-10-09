@@ -3,6 +3,9 @@ from schemas.user import CarBrandRequest
 
 
 class CarBrandServices():
+
+    def __init__(self, db) -> None:
+        self.db = db
     
     def get_car_brands(self):
         result = self.db.query(CarBrand).all()
@@ -11,13 +14,6 @@ class CarBrandServices():
     def get_car_brand(self,id):
         result =self.db.query(CarBrand) .filter (CarBrand.id ==id).first()
         return result
-   
-
-
-    def __init__(self, db) -> None:
-        self.db = db
-
-    
     
     def create_car_brand(self, car_brand_request: CarBrandRequest):
         new_brand = CarBrand(**car_brand_request.dict())

@@ -11,16 +11,17 @@ from schemas.user import CarBrandRequest
 
 car_brand_router = APIRouter()
 
-@car_brand_router.get('/car-brand', tags=['car-brand'], response_model=List[CarBrandRequest], status_code=201)
+@car_brand_router.get('/car-brands', tags=['car-brand'], response_model=List[CarBrandRequest], status_code=201)
 def get_car_brands() -> List[CarBrandRequest]:
      db = Session()
      result = CarBrandServices(db).get_car_brands()
      return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
-@car_brand_router.get ('/car-brand/{id}', tags=['car-brand'], response_model= CarBrandRequest)
-def get_car_brand (id:int =Path(ge=1, le=2000)) -> CarBrandRequest:
+
+@car_brand_router.get('/car-brand/{id}', tags=['car-brand'], response_model=CarBrandRequest)
+def get_car_brand(id: int = Path(ge=1, le=2000)) -> CarBrandRequest:
     db = Session()
-    result = CarBrandRequest(db).get_car_brand(id)
+    result = CarBrandServices(db).get_car_brand(id)
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 

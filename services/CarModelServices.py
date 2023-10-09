@@ -14,6 +14,11 @@ class CarModelServices():
     def get_car_model(self,id):
         result =self.db.query(CarModel) .filter (CarModel.id ==id).first()
         return result 
+    
+    def get_car_model_by_car_brand_id(self,car_brand_id):
+        result =self.db.query(CarModel) .filter (CarModel.car_brand_id == car_brand_id).all()
+        return result 
+
 
     def create_car_model(self, car_model_request: CarModelRequest):
         new_model= CarModel(**car_model_request.dict())

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 class User(BaseModel):
     email:str
@@ -14,7 +14,7 @@ class CarModelRequest (BaseModel):
     id : int
     name : str
     is_active: bool
-    car_brand_id : int
+    car_brand_id : int = Field
 
 class SpareServiceRequest (BaseModel):
     id : int

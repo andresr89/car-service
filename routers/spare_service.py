@@ -15,13 +15,13 @@ spare_service_router = APIRouter()
 @spare_service_router.get('/spare-service', tags=['spare-service'], response_model=List[SpareServiceRequest], status_code=201)
 def get_spares_service() -> List[SpareServiceRequest]:
      db = Session()
-     result = SpareServiceServices(db).get_car_models()
+     result = SpareServiceServices(db).get_spares_service()
      return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 @spare_service_router.get ('/spare-service/{id}', tags=['spare-service'], response_model= SpareServiceRequest)
 def get_spare_service (id:int =Path(ge=1, le=2000)) -> SpareServiceRequest:
     db = Session()
-    result = SpareServiceServices(db).get_car_brand(id)
+    result = SpareServiceServices(db).get_spare_service(id)
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 @spare_service_router.post('/spare-service', tags=['spare-service'], response_model=dict, status_code=201)

@@ -12,7 +12,7 @@ from schemas.user import ServiceRequest
 
 service_router = APIRouter()
 
-@service_router.get('/service', tags=['service'], response_model=List[ServiceRequest], status_code=201)
+@service_router.get('/services', tags=['service'], response_model=List[ServiceRequest], status_code=201)
 def get_services() -> List[ServiceRequest]:
      db = Session()
      result = ServiceServices(db).get_services()

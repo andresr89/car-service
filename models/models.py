@@ -32,7 +32,8 @@ class SpareService(Base):
     id = Column(Integer, primary_key = True, autoincrement=True)
     name = Column(String)
     is_active = Column(Boolean)
-    spare_model_id = Integer
+    service_id = Column(Integer)
+ 
 
 
 class SpareModel(Base):  

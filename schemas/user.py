@@ -20,7 +20,7 @@ class SpareServiceRequest (BaseModel):
     id : int
     name : str
     is_active : bool
-    spare_model_id :int
+    service_id :int
 
 class SpareModelRequest (BaseModel):
     id : int
@@ -32,7 +32,7 @@ class ServiceRequest (BaseModel):
     id: int
     name: str
     is_active : bool
-    spare_service_id :int
+    spare_service_id :int = Field
 
 class ServiceCarModelRequest (BaseModel):
     id : int

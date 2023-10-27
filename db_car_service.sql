@@ -57,8 +57,8 @@ CREATE TABLE public.spare_model
     id serial PRIMARY KEY,
     name varchar(250) NULL,
     is_active boolean NULL,
-    car_model_id bigint NULL,
-    FOREIGN KEY (car_model_id) REFERENCES public.car_model (id) ON DELETE RESTRICT ON UPDATE CASCADE
+    spare_service_id bigint NULL,
+    FOREIGN KEY (spare_service_id) REFERENCES public.spare_service(id) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE public.spare_service
@@ -75,7 +75,7 @@ CREATE INDEX "IXFK_car_model_car_brand" ON public.car_model (car_brand_id ASC);
 CREATE INDEX "IXFK_service_spare_service" ON public.service (spare_service_id ASC);
 CREATE INDEX "IXFK_service_car_model_car_model" ON public.service_car_model (car_model_id ASC);
 CREATE INDEX "IXFK_service_car_model_service" ON public.service_car_model (service_id ASC);
-CREATE INDEX "IXFK_spare_model_car_model" ON public.spare_model (car_model_id ASC);
+CREATE INDEX "IXFK_spare_model_car_model" ON public.spare_model (spare_service_id ASC);
 CREATE INDEX "IXFK_spare_service_service" ON public.spare_service (service_id ASC);
 
 -- Create Table Comments, Sequences for Autonumber Columns

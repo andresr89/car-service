@@ -26,7 +26,7 @@ class SpareModelRequest (BaseModel):
     id : int
     name : str
     is_active : bool
-    car_model_id : int
+    spare_service_id : int
 
 class ServiceRequest (BaseModel):
     id: int

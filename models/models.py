@@ -43,9 +43,8 @@ class SpareModel(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String)
     is_active = Column(Boolean)
-    car_model_id = Column(Integer)  
-    # car_model = relationship("CarModel", back_populates="spare_models") error mapper
-
+    spare_service_id = Column(Integer)  
+    
 class Service(Base):
 
     __tablename__ = "service"
